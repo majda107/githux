@@ -11,6 +11,33 @@
 //     window.location.href = "https://github.com/login/oauth/authorize?client_id=1e9353a52e2953a97cb0"
 // }
 
+Vue.component('api-service', {
+    props: [
+        'token'        
+    ],
+    data: function() {
+        return {
+            endpoint: 'https://api.github.com',
+            userdata: null
+        }
+    },
+    methods: {
+        requestUserData() {
+            axios.get(`${this.endpoint}/user`, { headers: { 'Authorization': `Bearer ${this.token}` } }).then(response =>{
+                console.log(response.data)
+                this.userdata = response.data
+            })
+        }
+    },
+    created: function() {
+        console.log("requesting user data...")
+        this.requestUserData()
+    },
+    template: '<div><div v-if="userdata != null"><span>Username: {{ userdata.login }}</span><br><span>Location: {{ userdata.location }}</span><br><span>Bio: {{ userdata.bio }}</span></div></div>'
+})
+
+
+
 
 Vue.component('test-component', {
     template: '<div>I am little vue test component</div>'
@@ -90,5 +117,5 @@ var app = new Vue({
         this.code = this.getCode()
         this.hasCode = (this.code == null)? false : true
     },
-    template: '<div class="app"><div v-if="token == null"><login v-if="!hasCode"></login><auth v-else v-on:received="handleReceivedToken" v-bind:code="code"></auth></div><div v-else>Logged in!</div></div>'
+    template: '<div class="app"><div v-if="token == null"><login v-if="!hasCode"></login><auth v-else v-on:received="handleReceivedToken" v-bind:code="code"></auth></div><div v-else>Logged in! <api-service v-bind:token="token"></api-service> </div></div>'
 })
