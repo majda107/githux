@@ -3,13 +3,14 @@ import App from './App.vue'
 import router from './router'
 
 
-import VueMaterial from "vue-material";
+// import VueMaterial from "vue-material";
 // import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
-import 'vue-material/dist/vue-material.min.css'
+// import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default-dark.css'
 // import 'vue-material/dist/theme/default.css'
+import MaterialKit from "./plugins/material-kit";
 
-Vue.use(VueMaterial)
+Vue.use(MaterialKit)
 
 // Vue.use(MdButton)
 // Vue.use(MdContent)
