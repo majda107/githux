@@ -4,6 +4,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div v-if="loggedIn">
+      <SearchBar v-on:searched="searched"/>
       <UserDisplay/>
     </div>
   </div>
@@ -12,7 +13,8 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import LoginBar from './components/LoginBar.vue'
-import UserDisplay from './components/UserDisplay'
+import SearchBar from './components/SearchBar.vue'
+import UserDisplay from './components/UserDisplay.vue'
 
 import { State } from './services/State'
 
@@ -21,7 +23,8 @@ export default {
   components: {
     // HelloWorld,
     LoginBar,
-    UserDisplay
+    UserDisplay,
+    SearchBar
   },
   data: function() {
     return {
@@ -29,7 +32,9 @@ export default {
     }
   },
   methods: {
-    
+    searched(text) {
+      alert(text)
+    }
   },
   created: function() {
     State.$on('received-token', token => {

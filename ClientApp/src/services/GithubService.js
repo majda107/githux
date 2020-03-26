@@ -44,5 +44,18 @@ export default {
                 }
             )
         })
+    },
+    
+    searchRepos(query) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${endpoint}/search/repositories&q=${query}`, { headers: this.getHeaders() }).then(
+                (response) => {
+                    resolve(response.data)
+                },
+                (error) => {
+                    reject(error)
+                }
+            )
+        })
     }
 }
