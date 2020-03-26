@@ -26,8 +26,12 @@ export default {
     },
     methods: {
         getCode() {
+            console.log("Getting code from url")
+            // console.log(this.$route)
+
             if(window.location.search == "") return null
 
+            console.log(window.location.search)
             let params = new URLSearchParams(window.location.search)
             return params.get('code')
         },
@@ -51,6 +55,7 @@ export default {
         this.code = State.code
 
         if(this.code != null) {
+            console.log("Asking for token...")
             AuthService.getToken(this.code).then(token => {
                 console.log(`~ Received token: ${token}`)
                 this.handleToken(token)

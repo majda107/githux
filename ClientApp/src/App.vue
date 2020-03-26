@@ -2,6 +2,11 @@
   <div id="app">
     <LoginBar/>
     <img alt="Vue logo" src="./assets/logo.png">
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/repositories">Repositories</router-link>
+    </nav>
+    <router-view/>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div v-if="loggedIn">
       <SearchBar v-on:searched="searched"/>
