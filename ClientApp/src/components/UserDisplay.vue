@@ -37,6 +37,7 @@ export default {
         }
     },
     created: function() {
+        console.log("User display created!")
         this.getUserData()
         this.getUserRepos()
     }

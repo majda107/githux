@@ -1,7 +1,7 @@
 <template>
   <div class="login">
       <!-- <md-button class="md-raised md-primary" v-on:click="loginRedirect">Login</md-button> -->
-      <md-button class="md-primary">Primary</md-button>
+      <md-button class="accent md-raised" v-on:click="loginRedirect">Login</md-button>
   </div>
 </template>
 

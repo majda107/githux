@@ -1,6 +1,6 @@
 <template>
     <div class="repositories">
-        Repositories...
+        Repos...
     </div>
 </template>
 
