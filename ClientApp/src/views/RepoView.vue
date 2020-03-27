@@ -1,7 +1,5 @@
 <template>
     <div class="repoview">
-        <!-- Repo view... -->
-        Repo detail {{ $route.params.owner }} | {{ $route.params.repo }}
         <RepoDetail v-bind:repo="repoData"/>
     </div>
 </template>

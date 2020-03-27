@@ -7,13 +7,11 @@
         <Repo v-for="repo in repos" v-bind:repo="repo" :key="repo.id"/>
   </ul>-->
   <div>
-    <form>
-      <md-field>
-        <label>Search</label>
-        <md-input v-model="initial"></md-input>
-      </md-field>
-      <md-button class="md-primary md-raised" v-on:click="search">Search</md-button>
-    </form>
+    <md-field>
+      <label>Search</label>
+      <md-input v-model="initial"></md-input>
+    </md-field>
+    <md-button class="md-primary md-raised" v-on:click="search">Search</md-button>
   </div>
 </template>
 

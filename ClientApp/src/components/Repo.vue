@@ -5,14 +5,17 @@
     <span class="repo-language">{{ repo.language }}</span>
     <a :href="repo.html_url">Link</a>
     <p>{{ repo.description }}</p>-->
-    <md-card md-with-hover :href="repo.html_url" class="repo-card">
+    <md-card md-with-hover v-on:click.native="redirect" class="repo-card">
       <md-card-header>
         <md-card-header-text>
           <div class="md-title">{{ repo.name}}</div>
           <div class="md-subhead">{{ repo.owner.login }} | {{ repo.language }}</div>
         </md-card-header-text>
         <md-button class="md-icon-button" md-menu-trigger>
-          <md-icon v-on:click.native="redirect">home</md-icon>
+          <!-- <md-icon v-on:click.native="redirect">home</md-icon> -->
+          <md-avatar class="md-small">
+            <img v-bind:src="repo.owner.avatar_url" alt="Avatar" />
+          </md-avatar>
         </md-button>
       </md-card-header>
 
@@ -36,8 +39,10 @@ export default {
   },
   methods: {
     redirect: function() {
-      if(this.repo == null) return
-      this.$router.push({ path: `/repositories/${this.repo.owner.login}/${this.repo.name}` })
+      if (this.repo == null) return;
+      this.$router.push({
+        path: `/repositories/${this.repo.owner.login}/${this.repo.name}`
+      });
     }
   }
 };
@@ -45,8 +50,8 @@ export default {
 
 <style lang="sass" scoped>
 .repo
-    padding: 10px 0 10px 0
+  padding: 10px 0 10px 0
     // height: 100% !important
-    &-card
-        height: 100% !important
+  &-card
+    height: 100% !important
 </style>
