@@ -1,45 +1,32 @@
 <template>
-    <div class="user-display" v-if="userdata != null">
+    <div class="user-display" v-if="getUserdata != null">
         <h2>Logged in as...</h2>
-        <span>{{ userdata.login }}</span>
-        <Repos v-if="userrepos != null" v-bind:repos="userrepos"/>
+        <span>{{ getUserdata.login }}</span>
+        <Repos v-if="getUserrepos != null" v-bind:repos="getUserrepos"/>
     </div>
 </template>
 
 <script>
 
-import GithubService from '../services/GithubService'
+// import GithubService from '../services/GithubService'
+import { mapGetters, mapActions } from 'vuex'
 
 import Repos from './Repos'
 
 export default {
-    data: function() {
-        return {
-            userdata: null,
-            userrepos: null
-        }
+    computed: {
+        ...mapGetters(['getUserdata', 'getUserrepos'])
+    },
+    methods: {
+        ...mapActions(['fetchUserdata', 'fetchUserrepos'])
     },
     components: {
         Repos
     },
-    methods: {
-        getUserData() {
-            GithubService.getUserData().then(response => {
-                this.userdata = response
-            })
-        },
-
-        getUserRepos() {
-            GithubService.getUserRepos().then(response => {
-                console.log(response)
-                this.userrepos = response
-            })
-        }
-    },
     created: function() {
         console.log("User display created!")
-        this.getUserData()
-        this.getUserRepos()
+        this.fetchUserdata()
+        this.fetchUserrepos()
     }
 }
 </script>

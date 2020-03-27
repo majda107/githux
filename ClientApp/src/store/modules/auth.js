@@ -22,7 +22,7 @@ const actions = {
         if (window.location.search == "") {
             // console.log("There are no url params!")
             return null;
-        } 
+        }
 
         // console.log(`Found url params:  ${window.location.search}`);
         let params = new URLSearchParams(window.location.search);
@@ -33,25 +33,28 @@ const actions = {
     },
 
     fetchToken({ commit }) {
-        let code = getters.getCode(state) 
-        if(code == null) {
-            console.log('there is no code...')
-            return
-        }
+        return new Promise((resolve) => {
+            let code = getters.getCode(state)
+            if (code == null) {
+                console.log('there is no code...')
+                return
+            }
 
-        AuthService.getToken(code).then(token => {
-            commit('setToken', token)
+            AuthService.getToken(code).then(token => {
+                commit('setToken', token)
+                resolve(token)
+            })
         })
     }
 }
 
 const mutations = {
     setCode: (state, code) => { state.auth.code = code },
-    setToken: (state, token) => { 
-        state.auth.token = token 
+    setToken: (state, token) => {
+        state.auth.token = token
 
         state.auth.loggedIn = (token != null)
-        if(state.auth.loggedIn) console.log("[AuthModule mutation] Logged in successfully!")
+        if (state.auth.loggedIn) console.log("[AuthModule mutation] Logged in successfully!")
     },
     // setLoggedIn: (state, loggedIn ) => { state.auth.loggedIn = loggedIn }
 }

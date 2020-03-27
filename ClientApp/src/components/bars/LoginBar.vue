@@ -37,11 +37,14 @@ export default {
   },
   created: function() {
     this.fetchCode()
-    this.fetchToken()
+    this.fetchToken().then(token => {
+        if(token == null) return
+        this.fetchUserdata()
+    })
   },
-  updated: function() {
-    this.fetchUserdata()
-  },
+//   updated: function() {
+//     this.fetchUserdata()
+//   },
   computed: {
     ...mapGetters(['getCode', 'getToken', 'getLoggedIn', 'getUserdata'])
   }

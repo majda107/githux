@@ -11,7 +11,7 @@
           <!-- <router-view></router-view> -->
         </md-tab>
 
-        <md-tab v-if="loggedIn" id="tab-me" md-label="Me" to="/me" router-link>
+        <md-tab v-if="getLoggedIn" id="tab-me" md-label="Me" to="/me" router-link>
           <!-- <router-view></router-view> -->
         </md-tab>
       </md-tabs>
@@ -19,10 +19,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: [
-    'loggedIn'
-  ],
-  methods: {}
+  name: 'Navigation',
+  computed: {
+    ...mapGetters(['getLoggedIn'])
+  }
 };
 </script>

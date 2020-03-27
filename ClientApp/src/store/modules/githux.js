@@ -3,13 +3,14 @@ import GithubService from '../../services/GithubService'
 
 const state = {
     githux: {
-        userdata: null
+        userdata: null,
+        userrepos: null
     }
 }
 
 const getters = {
-    // allGithux: (state) => state.githux
-    getUserdata: (state) => state.githux.userdata
+    getUserdata: (state) => state.githux.userdata,
+    getUserrepos: (state) => state.githux.userrepos
 }
 
 const actions = {
@@ -18,11 +19,18 @@ const actions = {
         GithubService.getUserData().then(data => {
             commit('setUserdata', data)
         })
+    },
+
+    fetchUserrepos({ commit }) {
+        GithubService.getUserRepos().then(data => {
+            commit('setUserrepos', data)
+        })
     }
 }
 
 const mutations = {
-    setUserdata: (state, userdata) => { state.githux.userdata = userdata }
+    setUserdata: (state, userdata) => { state.githux.userdata = userdata },
+    setUserrepos: (state, userrepos) => { state.githux.userrepos = userrepos } 
 }
 
 export default {
