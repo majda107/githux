@@ -1,5 +1,8 @@
 const axios = require('axios')
-import { State } from './State'
+// import { State } from './State'
+
+// import { mapGetters } from "vuex";
+import store from '../store/store'
 
 const endpoint = "https://api.github.com"
 
@@ -7,7 +10,10 @@ export default {
 
 
     getHeaders() {
-        return { 'Authorization': `Bearer ${State.token}` }
+        let token = store.getters.getToken
+
+        console.log(`[GithubService] Extracted token from store... ${token}`)
+        return { 'Authorization': `Bearer ${token}` }
     },
 
     getUserData() {

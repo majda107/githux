@@ -1,37 +1,28 @@
 // import axios from 'axios'
+import GithubService from '../../services/GithubService'
 
 const state = {
-    githux: [
-        {
-            title: 'First'
-        },
-        {
-            title: 'Second'
-        }
-    ]
+    githux: {
+        userdata: null
+    }
 }
 
 const getters = {
-    allGithux: (state) => state.githux
+    // allGithux: (state) => state.githux
+    getUserdata: (state) => state.githux.userdata
 }
 
 const actions = {
-    async fetchGithux({ commit }) {
-        let data = { title: 'Third' }
-
-        commit('addGithux', data)
-        // commit('setGithux', data)
+    fetchUserdata({ commit }) {
+        console.log('[Githuxjs module] Fetching userdata')
+        GithubService.getUserData().then(data => {
+            commit('setUserdata', data)
+        })
     }
 }
 
 const mutations = {
-    setGithux: (state, githux) => (state.githux = githux),
-    addGithux: (state, githux) => {
-        // console.log(githux)
-        // state.githux.push(githux)
-
-        state.githux =  { ...state.githux, githux }
-    }
+    setUserdata: (state, userdata) => { state.githux.userdata = userdata }
 }
 
 export default {

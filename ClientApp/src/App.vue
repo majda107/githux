@@ -20,7 +20,7 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from "./components/bars/NavigationBar.vue";
 
-import LoginBar from './components/LoginBar.vue'
+import LoginBar from './components/bars/LoginBar'
 // import SearchBar from './components/SearchBar.vue'
 // import UserDisplay from './components/UserDisplay.vue'
 
