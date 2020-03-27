@@ -51,6 +51,19 @@ export default {
             )
         })
     },
+
+    getOwnerRepo(owner, repo) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${endpoint}/repos/${owner}/${repo}`).then(
+                (response) => {
+                    resolve(response.data)
+                },
+                (error) => {
+                    reject(error)
+                }
+            )
+        })
+    },
     
     searchRepos(query) {
         return new Promise((resolve, reject) => {

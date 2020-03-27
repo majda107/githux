@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Repositories from './views/Repositories.vue'
 import Me from './views/Me.vue'
+import RepoView from './views/RepoView.vue'
+
 
 Vue.use(Router)
 
@@ -29,9 +31,19 @@ export default new Router({
             component: Repositories
         },
         {
+            path: '/repositories/:query', 
+            name: 'repositories query',
+            component: Repositories
+        },
+        {
             path: '/me',
             name: 'me',
             component: Me
+        },
+        {
+            path: '/repositories/:owner/:repo',
+            name: 'repo detail',
+            component: RepoView
         }
     ],
     linkActiveClass

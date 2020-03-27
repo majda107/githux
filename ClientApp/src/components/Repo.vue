@@ -9,10 +9,10 @@
       <md-card-header>
         <md-card-header-text>
           <div class="md-title">{{ repo.name}}</div>
-          <div class="md-subhead">{{ repo.language }}</div>
+          <div class="md-subhead">{{ repo.owner.login }} | {{ repo.language }}</div>
         </md-card-header-text>
         <md-button class="md-icon-button" md-menu-trigger>
-          <md-icon>home</md-icon>
+          <md-icon v-on:click.native="redirect">home</md-icon>
         </md-button>
       </md-card-header>
 
@@ -33,6 +33,12 @@ export default {
   props: ["repo"],
   created: function() {
     // console.log(repo.name)
+  },
+  methods: {
+    redirect: function() {
+      if(this.repo == null) return
+      this.$router.push({ path: `/repositories/${this.repo.owner.login}/${this.repo.name}` })
+    }
   }
 };
 </script>

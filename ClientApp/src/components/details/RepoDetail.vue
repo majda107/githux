@@ -1,28 +1,13 @@
 <template>
   <div>
-    <transition name="fade">
-      <div v-if="active">
-          <md-progress-bar class="md-accent" md-mode="query"></md-progress-bar>
-      </div>
-    </transition>
+    <!-- Repo detail {{ $route.params.owner }} | {{ $route.params.repo }} -->
+    <div v-if="repo != null">{{ repo.name }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Loaading",
-  props: [
-      'id'
-  ]
+  name: "Repo-detail",
+  props: ["repo"]
 };
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-</style>
