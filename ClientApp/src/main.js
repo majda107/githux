@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import store from './store/store'
+
+
+// ======= LOAD MATERIAL KIT =====
 
 // import VueMaterial from "vue-material";
 import { MdButton, MdContent, MdTabs, MdToolbar, MdApp, MdAvatar } from 'vue-material/dist/components'
@@ -19,10 +23,13 @@ Vue.use(MdTabs)
 Vue.use(MdApp)
 Vue.use(MdAvatar)
 
+// === END OF MK =====
+
 
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

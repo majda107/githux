@@ -10,6 +10,9 @@
       </md-app-toolbar>
     </md-app>
     <NavigationBar v-bind:loggedIn="loggedIn"/>
+    <md-content>
+      <router-view></router-view>
+    </md-content>
   </div>
 </template>
 
