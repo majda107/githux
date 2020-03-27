@@ -1,6 +1,8 @@
 <template>
     <div class="home">
-        Homepage...
+        <span class="md-display-1">Homepage</span>
+        <br>
+        <!-- <span class="md-body-1">Vue repositories</span> -->
         <!-- <LoginBar/> -->
         <!-- <Githux/> -->
         <LoadingBar v-bind:active="loading"/>

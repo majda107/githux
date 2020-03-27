@@ -19,5 +19,5 @@ export default {
 <style lang="sass" scoped>
 .repos
     align-items: stretch !important
-    padding: 0 60px 0 60px
+    // padding: 0 60px 0 60px
 </style>

@@ -5,13 +5,15 @@
         <div class="md-toolbar-row">
           <h3 class="md-title" style="flex: 1">Githux</h3>
           <!-- <md-icon>favorite</md-icon> -->
-          <LoginBar/>
+          <LoginBar />
         </div>
       </md-app-toolbar>
     </md-app>
-    <NavigationBar v-bind:loggedIn="loggedIn"/>
+    <NavigationBar v-bind:loggedIn="loggedIn" />
     <md-content>
-      <router-view></router-view>
+      <div class="router-view">
+        <router-view></router-view>
+      </div>
     </md-content>
   </div>
 </template>
@@ -20,7 +22,7 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from "./components/bars/NavigationBar.vue";
 
-import LoginBar from './components/bars/LoginBar'
+import LoginBar from "./components/bars/LoginBar";
 // import SearchBar from './components/SearchBar.vue'
 // import UserDisplay from './components/UserDisplay.vue'
 
@@ -54,3 +56,7 @@ export default {
 };
 </script>
 
+<style lang="sass" scoped>
+.router-view
+  padding: 30px
+</style>

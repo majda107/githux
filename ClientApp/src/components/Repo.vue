@@ -1,5 +1,5 @@
 <template>
-  <div class="md-layout-item md-medium-size-50 md-size-25 repo">
+  <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25 repo">
     <!-- <h2>{{ repo.name }}</h2>
     <span class="repo-branch">{{ repo.default_branch }}</span>
     <span class="repo-language">{{ repo.language }}</span>
