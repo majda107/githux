@@ -2,7 +2,8 @@
   <div>
     <transition name="fade">
       <div v-if="active">
-          <md-progress-bar class="md-accent" md-mode="query"></md-progress-bar>
+          <!-- <md-progress-bar class="md-accent" md-mode="query"></md-progress-bar> -->
+          Loading...
       </div>
     </transition>
   </div>

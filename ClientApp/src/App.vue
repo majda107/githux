@@ -1,20 +1,25 @@
 <template>
-  <div id="app" class="page-container">
-    <md-app>
-      <md-app-toolbar class="md-primary md-dense">
-        <div class="md-toolbar-row">
-          <h3 class="md-title" style="flex: 1">Githux</h3>
-          <!-- <md-icon>favorite</md-icon> -->
-          <LoginBar />
-        </div>
-      </md-app-toolbar>
-    </md-app>
-    <NavigationBar v-bind:loggedIn="loggedIn" />
-    <md-content>
-      <div class="router-view">
-        <router-view></router-view>
+  <div id="app" class="page-container app">
+    <div class="topbar">
+      <h1 class="topbar-title">Githux</h1>
+      <div class="topbar-login">
+        <LoginBar />
       </div>
-    </md-content>
+    </div>
+    <!-- <md-app> -->
+    <!-- <md-app-toolbar class="md-primary md-dense"> -->
+    <!-- <div class="md-toolbar-row">
+          <h3 class="title" style="flex: 1">Githux</h3>
+          <LoginBar />
+    </div>-->
+    <!-- </md-app-toolbar> -->
+    <!-- </md-app> -->
+    <NavigationBar v-bind:loggedIn="loggedIn" />
+    <!-- <md-content> -->
+    <div class="router-view">
+      <router-view></router-view>
+    </div>
+    <!-- </md-content> -->
   </div>
 </template>
 
@@ -56,7 +61,76 @@ export default {
 };
 </script>
 
+
 <style lang="sass" scoped>
+@import '../sass/abstracts/variables'
+
+.topbar
+  background-color: $primary
+  width: 100%
+  height: auto
+  display: grid
+  grid-auto-flow: column
+  grid-template-columns: 20px auto 1fr auto 20px
+  grid-template-areas: '. title . login .'
+  justify-content: center
+  align-items: center
+  padding-top: 10px
+  // padding-left: 20px
+  // padding-right: 20px
+  // padding: 20px
+
+  &-title
+    grid-area: title
+    font-size: 2rem
+    font-weight: 100
+
+  &-login
+    grid-area: login
+
+.app
+  background-color: $background-color
+  min-height: 100vh
+
 .router-view
-  padding: 30px
+  width: 94%
+  margin-left: auto
+  margin-right: auto
+</style>
+
+
+
+<style lang="sass">
+@import '../sass/abstracts/variables'
+@import '../sass/abstracts/mixins'
+
+*
+  color: $text-color
+  font-family: 'Roboto'
+  padding: 0
+  margin: 0
+
+button
+  background-color: $color
+  color: $text-softer-dark-color
+  font-size: 1.05rem
+  font-weight: 500
+  padding: 6px 14px 6px 14px
+  border: 0
+  border-radius: 2px
+  @include elevation()
+
+button:hover
+  cursor: pointer
+  @include elevation-hover()
+
+input
+  border: 0
+  background: transparent
+  padding: 6px 14px 6px 14px
+  font-size: 1.2rem
+  border-bottom: 2px solid $primary
+
+input:focus
+  outline: 0
 </style>

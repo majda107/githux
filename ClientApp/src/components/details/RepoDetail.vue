@@ -1,33 +1,16 @@
 <template>
-  <div v-if="repo != null" class="md-layout-item md-size-100 repo">
-    <md-content class="md-layout">
-      <div class="md-layout-item md-size-100">
-        <div class="md-display-2">{{ repo.name }}</div>
-        <div class="md-caption">{{ repo.id }}</div>
-        <div class="md-subheading">{{ repo.full_name }}</div>
+  <div v-if="repo != null" class="container">
+    <div class="repo">
+      <div class="repo-header">
+        <h3>{{ repo.name }}</h3>
+        <img v-bind:src="repo.owner.avatar_url" />
+
+        <span>{{ repo.id }}</span>
       </div>
-      <md-divider></md-divider>
-      <md-card md-with-hover class="repo-card md-layout-item md-size-100">
-        <md-card-header>
-          <md-card-header-text>
-            <div class="md-title">{{ repo.name}}</div>
-            <div class="md-subhead">{{ repo.owner.login }} | {{ repo.language }}</div>
-          </md-card-header-text>
-          <md-button class="md-icon-button" md-menu-trigger>
-            <md-icon>home</md-icon>
-          </md-button>
-        </md-card-header>
-
-        <md-card-content>
-          <div class="md-subhead">{{ repo.default_branch }}</div>
-          <span class="md-caption">{{ repo.description }}</span>
-        </md-card-content>
-
-        <md-card-actions>
-          <!-- <span class="md-body-1">{{ repo.ssh_url }}</span> -->
-        </md-card-actions>
-      </md-card>
-    </md-content>
+      <div class="repo-content">
+        {{ repo.description }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,3 +20,48 @@ export default {
   props: ["repo"]
 };
 </script>
+
+<style lang="sass" scoped>
+@import '../../../sass/abstracts/variables'
+@import '../../../sass/abstracts/mixins'
+
+.container
+  width: 100%
+  border-radius: 6px
+  @include elevation()
+  background-color: $background-darker-color
+
+.repo
+  padding: 14px
+  display: grid
+  grid-auto-flow: row
+  grid-template-columns: 100%
+  justify-items: center
+  width: 100%
+
+  &-header
+    display: grid
+    grid-template-areas: 'id id' 'header image'
+    img
+      width: 44px
+      height: 44px
+      margin-left: 20px
+
+    h3
+      font-size: 1.6rem
+      align-self: center
+    
+    span
+      grid-area: id
+      justify-self: center
+      font-weight: 600
+      color: $text-softer-dark-color
+      font-size: 1.5rem
+      padding-bottom: 14px
+
+  &-content
+    max-height: 100px
+    padding-top: 40px
+    overflow: hidden
+
+</style>

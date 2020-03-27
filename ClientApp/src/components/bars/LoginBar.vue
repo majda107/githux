@@ -1,5 +1,5 @@
 <template>
-  <div class="login-bar">
+  <!-- <div class="login-bar">
     <md-toolbar class="md-primary" md-elevation="0">
       <div class="md-toolbar-row">
         <div v-if="!getLoggedIn">
@@ -11,6 +11,18 @@
         </div>
       </div>
     </md-toolbar>
+  </div>-->
+
+  <div class="login-bar">
+    <div v-if="!getLoggedIn">
+      <Login />
+    </div>
+    <div class="logged" v-if="getUserdata != null">
+      <div class="logged-name">{{ getUserdata.login }}</div>
+      <div class="logged-avatar">
+        <Avatar v-bind:url="getUserdata.avatar_url" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,24 +41,24 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['fetchCode', 'fetchToken', 'fetchUserdata']),
+    ...mapActions(["fetchCode", "fetchToken", "fetchUserdata"])
   },
   components: {
     Login,
     Avatar
   },
   created: function() {
-    this.fetchCode()
+    this.fetchCode();
     this.fetchToken().then(token => {
-        if(token == null) return
-        this.fetchUserdata()
-    })
+      if (token == null) return;
+      this.fetchUserdata();
+    });
   },
-//   updated: function() {
-//     this.fetchUserdata()
-//   },
+  //   updated: function() {
+  //     this.fetchUserdata()
+  //   },
   computed: {
-    ...mapGetters(['getCode', 'getToken', 'getLoggedIn', 'getUserdata'])
+    ...mapGetters(["getCode", "getToken", "getLoggedIn", "getUserdata"])
   }
 };
 </script>
@@ -54,6 +66,11 @@ export default {
 <style lang="sass" scoped>
 // .login-bar
 //     border: 1px solid black
-.avatar
-  margin-left: 14px  
+
+.logged
+  display: flex
+  flex-flow: row
+
+  .avatar
+    margin-left: 14px  
 </style>
