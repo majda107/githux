@@ -1,7 +1,7 @@
 <template>
-    <ul class="repos">
+    <div class="md-layout md-gutter md-alignment-top-center repos">
         <Repo v-for="repo in repos" v-bind:repo="repo" :key="repo.id"/>
-    </ul>
+    </div>
 </template>
 
 <script>
@@ -16,3 +16,8 @@ export default {
     ]
 }
 </script>
+<style lang="sass" scoped>
+.repos
+    align-items: stretch !important
+    padding: 0 60px 0 60px
+</style>

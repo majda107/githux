@@ -22,15 +22,18 @@ const actions = {
     },
 
     fetchUserrepos({ commit }) {
-        GithubService.getUserRepos().then(data => {
-            commit('setUserrepos', data)
+        return new Promise((resolve) => {
+            GithubService.getUserRepos().then(data => {
+                commit('setUserrepos', data)
+                resolve()
+            })
         })
     }
 }
 
 const mutations = {
     setUserdata: (state, userdata) => { state.githux.userdata = userdata },
-    setUserrepos: (state, userrepos) => { state.githux.userrepos = userrepos } 
+    setUserrepos: (state, userrepos) => { state.githux.userrepos = userrepos }
 }
 
 export default {

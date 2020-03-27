@@ -40,10 +40,15 @@ const actions = {
                 return
             }
 
-            AuthService.getToken(code).then(token => {
-                commit('setToken', token)
-                resolve(token)
-            })
+            AuthService.getToken(code).then(
+                token => {
+                    commit('setToken', token)
+                    resolve(token)
+                },
+                () => {
+                    window.location.href =
+                        "https://github.com/login/oauth/authorize?client_id=1e9353a52e2953a97cb0";
+                })
         })
     }
 }

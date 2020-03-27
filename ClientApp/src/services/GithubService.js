@@ -54,7 +54,7 @@ export default {
     
     searchRepos(query) {
         return new Promise((resolve, reject) => {
-            axios.get(`${endpoint}/search/repositories&q=${query}`, { headers: this.getHeaders() }).then(
+            axios.get(`${endpoint}/search/repositories?q=${query}`).then(
                 (response) => {
                     resolve(response.data)
                 },

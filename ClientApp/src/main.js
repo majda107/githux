@@ -8,7 +8,7 @@ import store from './store/store'
 // ======= LOAD MATERIAL KIT =====
 
 // import VueMaterial from "vue-material";
-import { MdButton, MdContent, MdTabs, MdToolbar, MdApp, MdAvatar } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdTabs, MdToolbar, MdApp, MdAvatar, MdCard, MdRipple, MdIcon, MdProgress, MdTooltip } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default-dark.css'
 import 'vue-material/dist/theme/default.css'
@@ -22,6 +22,12 @@ Vue.use(MdContent)
 Vue.use(MdTabs)
 Vue.use(MdApp)
 Vue.use(MdAvatar)
+
+Vue.use(MdCard)
+Vue.use(MdRipple)
+Vue.use(MdIcon)
+Vue.use(MdProgress)
+Vue.use(MdTooltip)
 
 // === END OF MK =====
 
