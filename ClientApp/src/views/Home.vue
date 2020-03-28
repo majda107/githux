@@ -45,10 +45,6 @@ export default {
 @import '../../sass/abstracts/variables'
 
 .home
-    width: 94%
-    margin-left: auto
-    margin-right: auto
-
     &-header
         text-align: center
         padding-top: 40px

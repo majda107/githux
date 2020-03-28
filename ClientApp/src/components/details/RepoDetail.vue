@@ -15,9 +15,12 @@
 </template>
 
 <script>
+
 export default {
   name: "Repo-detail",
-  props: ["repo"]
+  props: ["repo"],
+  components: {
+  }
 };
 </script>
 
@@ -37,7 +40,7 @@ export default {
   grid-auto-flow: row
   grid-template-columns: 100%
   justify-items: center
-  width: 100%
+  // width: 100%
 
   &-header
     display: grid
