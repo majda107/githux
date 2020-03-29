@@ -70,6 +70,7 @@ export default {
 .logged
   display: flex
   flex-flow: row
+  align-items: center
 
   .avatar
     margin-left: 14px  

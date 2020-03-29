@@ -1,5 +1,9 @@
 <template>
   <div class="repositories">
+    <div class="header">
+      <h2 class="header-title">Public repositories</h2>
+      <span class="header-sub">... alright then, keep your secrets ...</span>
+    </div>
     <SearchBar v-on:searched="searched" />
     <LoadingBar v-bind:active="loading" />
     <Repos v-bind:repos="repos" />

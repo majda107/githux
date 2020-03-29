@@ -133,4 +133,25 @@ input
 
 input:focus
   outline: 0
+
+label
+  font-size: 1.2rem
+
+a
+  color: $accent
+
+
+.header
+  text-align: center
+  padding-top: 40px
+  padding-bottom: 40px
+
+  &-sub
+    font-size: 1.2rem
+    color: $text-softer-dark-color
+
+  &-title
+    font-size: 1.6rem
+    padding-bottom: 10px
+
 </style>

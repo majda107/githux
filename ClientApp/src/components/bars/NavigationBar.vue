@@ -15,7 +15,7 @@
     <div class="navigation-links">
       <router-link class="navigation-links-link" to="/home">Home</router-link>
       <router-link class="navigation-links-link" to="/repositories">Repositories</router-link>
-      <router-link class="navigation-links-link" to="/gists">Gists</router-link>
+      <router-link class="navigation-links-link" to="/gists" v-if="getLoggedIn">My gists</router-link>
       <router-link class="navigation-links-link" to="/me" v-if="getLoggedIn">Me</router-link>
     </div>
   </div>

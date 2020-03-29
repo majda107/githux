@@ -1,55 +1,64 @@
 <template>
-  <div class="repositories">
-    <SearchBar v-on:searched="searched" />
+  <div class="gists">
+    <div class="header">
+      <h2 class="header-title">My gists</h2>
+      <span class="header-sub">... so I'm basically stealing your data ...</span>
+    </div>
     <LoadingBar v-bind:active="loading" />
+    <div class="gists-view" v-if="getUsergists != null">
+      <!-- <div v-for="gist in getUsergists" :key="gist.id">{{ gist.url }}</div> -->
+      <GistDetail v-for="gist in getUsergists" :key="gist.id" v-bind:gist="gist"/>
+    </div>
+    <div class="header">
+      <h2 class="header-title">Gist creator</h2>
+      <span class="header-sub">... lemme create gist for ya uwu...</span>
+    </div>
+    <div class="gists-creator">
+      <GistCreator />
+    </div>
   </div>
 </template>
 
 <script>
-import SearchBar from "../components/bars/SearchBar";
-import LoadingBar from "../components/bars/LoadingBar";
+import { mapGetters, mapActions } from "vuex";
 
-import GithubService from "../services/GithubService";
+import LoadingBar from "../components/bars/LoadingBar";
+import GistCreator from "../components/GistCreator";
+import GistDetail from '../components/details/GistDetail'
 
 export default {
-  name: "Repositories",
   data: function() {
     return {
-      gists: null,
       loading: false
     };
   },
-  components: {
-    SearchBar,
-    LoadingBar
+  computed: {
+    ...mapGetters(["getUsergists"])
   },
   methods: {
-    searched: function(text) {
-      this.$router.push({ path: `/gists/${text}` }).catch(() => {});
-    },
-
-    query: function(query) {
-      this.loading = true;
-      GithubService.searchGists(query).then(data => {
-        this.gists = data.items;
-        this.loading = false;
-      });
-    }
+    ...mapActions(["fetchUsergists"])
+  },
+  components: {
+    LoadingBar,
+    GistCreator,
+    GistDetail
   },
   created: function() {
-    let query = this.$route.params.query;
-    if (query == null) return;
-
-    this.query(query);
-  },
-  watch: {
-    $route(to, from) {
-      console.log("Route changed!" + to + from);
-      let query = this.$route.params.query;
-      if (query == null) return;
-
-      this.query(query)
-    }
+    console.log("User display created!");
+    this.loading = true;
+    this.fetchUsergists().then(() => {
+      this.loading = false;
+    });
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.gists
+
+  &-view
+    display: grid
+    grid-template-columns: 100%
+    row-gap: 16px
+
+</style>

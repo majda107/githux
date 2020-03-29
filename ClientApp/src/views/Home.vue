@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="home-header">
-      <h2 class="home-header-title">Homepage</h2>
-      <span class="home-header-vue">... one mighty Vue place ...</span>
+    <div class="header">
+      <h2 class="header-title">Homepage</h2>
+      <span class="header-sub">... one mighty Vue place ...</span>
     </div>
     <!-- <span class="md-body-1">Vue repositories</span> -->
     <!-- <LoginBar/> -->

@@ -47,7 +47,7 @@ const actions = {
                 },
                 () => {
                     window.location.href =
-                        "https://github.com/login/oauth/authorize?client_id=1e9353a52e2953a97cb0";
+                        "https://github.com/login/oauth/authorize?scope=gist&client_id=1e9353a52e2953a97cb0";
                 })
         })
     }

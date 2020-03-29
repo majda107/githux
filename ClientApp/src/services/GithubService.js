@@ -18,7 +18,7 @@ export default {
 
     getUserData() {
         return new Promise((resolve) => {
-            axios.get(`${endpoint}/user`, { headers: this.getHeaders() }).then(response =>{
+            axios.get(`${endpoint}/user`, { headers: this.getHeaders() }).then(response => {
                 console.log(response.data)
                 // this.userdata = response.data
                 resolve(response.data)
@@ -76,7 +76,7 @@ export default {
             )
         })
     },
-    
+
     searchRepos(query) {
         return new Promise((resolve, reject) => {
             axios.get(`${endpoint}/search/repositories?q=${query}`).then(
@@ -90,9 +90,14 @@ export default {
         })
     },
 
-    searchGists(query) {
+    createUserGist(description, ispublic, files) {
+        console.log(`[GithubService] Creating user gist: ${description} | ${ispublic} | ${files}`)
         return new Promise((resolve, reject) => {
-            axios.get(`${endpoint}/search/gists?q=${query}`).then(
+            axios.post(`${endpoint}/gists`, {
+                description: description,
+                public: ispublic,
+                files: files
+            }, { headers: this.getHeaders() }).then(
                 (response) => {
                     resolve(response.data)
                 },

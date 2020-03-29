@@ -42,11 +42,6 @@ export default new Router({
             component: GistsView
         },
         {
-            path: '/gists/:query',
-            name: 'gists query',
-            component: GistsView
-        },
-        {
             path: '/me',
             name: 'me',
             component: Me
