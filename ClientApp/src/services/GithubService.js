@@ -88,5 +88,18 @@ export default {
                 }
             )
         })
+    },
+
+    searchGists(query) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${endpoint}/search/gists?q=${query}`).then(
+                (response) => {
+                    resolve(response.data)
+                },
+                (error) => {
+                    reject(error)
+                }
+            )
+        })
     }
 }

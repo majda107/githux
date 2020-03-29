@@ -6,12 +6,14 @@
     </md-field>
     <md-button class="md-primary md-raised" v-on:click="search">Search</md-button>
   </div>-->
-  <div class="search">
-    <form class="search-form">
-      <label>Search</label>
-      <input v-model="initial" />
-      <button v-on:click="search">Search</button>
-    </form>
+  <div class="container">
+    <div class="search">
+      <form class="search-form">
+        <label class="search-form-label">Search: </label>
+        <input class="search-form-input" v-model="initial" />
+        <button class="search-form-button" v-on:click="search">Search</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -29,3 +31,28 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+
+.container
+  width: 100%
+  display: flex
+  justify-content: center
+  justify-items: center
+
+.search
+  padding: 10px
+  display: inline-block
+  justify-self: center
+
+  &-form
+    width: auto
+    display: inline-block
+
+    &-input
+      margin: 20px
+
+    &-label
+      font-size: 1.2rem
+
+</style>

@@ -3,7 +3,7 @@
     <div class="commit">
       <div class="commit-hash">{{ commit.sha }}</div>
       <div class="commit-date">{{ commit.commit.committer.date }}</div>
-      <div class="commit-message">{{ commit.commit.message }}{{ commit.commit.message }}{{ commit.commit.message }}{{ commit.commit.message }}</div>
+      <div class="commit-message">{{ commit.commit.message }}</div>
       <img class="commit-avatar" v-bind:src="commit.committer.avatar_url" />
     </div>
   </div>

@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Repositories from './views/Repositories.vue'
 import Me from './views/Me.vue'
 import RepoView from './views/RepoView.vue'
+import GistsView from './views/GistsView.vue'
 
 
 Vue.use(Router)
@@ -34,6 +35,16 @@ export default new Router({
             path: '/repositories/:query', 
             name: 'repositories query',
             component: Repositories
+        },
+        {
+            path: '/gists',
+            name: 'gists',
+            component: GistsView
+        },
+        {
+            path: '/gists/:query',
+            name: 'gists query',
+            component: GistsView
         },
         {
             path: '/me',
