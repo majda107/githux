@@ -52,7 +52,4 @@ export default {
     &-input
       margin: 20px
 
-    &-label
-      font-size: 1.2rem
-
 </style>
