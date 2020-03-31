@@ -17,6 +17,9 @@
     <NavigationBar v-bind:loggedIn="loggedIn" />
     <!-- <md-content> -->
     <div class="router-view">
+      <div class="cat-bar">
+        <CatBar />
+      </div>
       <router-view></router-view>
     </div>
     <!-- </md-content> -->
@@ -25,26 +28,27 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+// import { mapActions } from "vuex";
+
 import NavigationBar from "./components/bars/NavigationBar.vue";
 
 import LoginBar from "./components/bars/LoginBar";
+import CatBar from "./components/bars/CatBar";
 // import SearchBar from './components/SearchBar.vue'
 // import UserDisplay from './components/UserDisplay.vue'
 
-import { State } from "./services/State";
+// import { State } from "./services/State";
 
 export default {
   name: "App",
   components: {
-    // HelloWorld,
     LoginBar,
-    // UserDisplay,
-    // SearchBar,
+    CatBar,
     NavigationBar
   },
   data: function() {
     return {
-      loggedIn: false
+      // loggedIn: false
     };
   },
   methods: {
@@ -53,10 +57,11 @@ export default {
     }
   },
   created: function() {
-    State.$on("received-token", token => {
-      console.log(`~ Token received in app! ${token}`);
-      this.loggedIn = true;
-    });
+    // this.fetchCats()
+    // State.$on("received-token", token => {
+    //   console.log(`~ Token received in app! ${token}`);
+    //   this.loggedIn = true;
+    // });
   }
 };
 </script>
@@ -96,6 +101,12 @@ export default {
   width: 94%
   margin-left: auto
   margin-right: auto
+
+  .cat-bar
+    padding-top: 14px
+    display: flex
+    justify-content: center
+
 </style>
 
 
@@ -143,7 +154,6 @@ label
 a
   color: $accent
 
-
 .header
   text-align: center
   padding-top: 40px
@@ -156,5 +166,4 @@ a
   &-title
     font-size: 1.6rem
     padding-bottom: 10px
-
 </style>

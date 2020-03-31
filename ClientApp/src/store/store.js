@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 
 import githux from './modules/githux'
 import auth from './modules/auth'
+import cat from './modules/cat'
 
 import 'es6-promise/auto'
 
@@ -14,6 +15,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     modules: {
         githux,
-        auth
+        auth,
+        cat
     }
 })
