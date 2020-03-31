@@ -42,9 +42,13 @@ export default {
   display: flex
   justify-content: center
   padding-bottom: 10px
+  padding-top: 10px
 
   &-links
     padding: 10px
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
 
     &-link
       padding: 10px

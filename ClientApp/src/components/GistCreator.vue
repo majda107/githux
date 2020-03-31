@@ -106,6 +106,7 @@ export default {
             transition: background-color 1s
             border-radius: 4px
             padding: 20px
+            grid-template-columns: 100%
             @include elevation()
 
             &-line
@@ -124,8 +125,10 @@ export default {
                 &-remove:hover
                     cursor: pointer
 
-            input
-                // transition: opacity 1s
-                // width: 80%
-                // justify-self: flex-end
+@media screen and ( max-width: 800px )
+  .creator
+    &-form
+      grid-template-columns: 100%
+  
 </style>
+

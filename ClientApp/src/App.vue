@@ -110,6 +110,9 @@ export default {
   padding: 0
   margin: 0
 
+body
+  overflow-y: scroll
+
 button
   background-color: $color
   color: $text-softer-dark-color
